@@ -12,13 +12,16 @@ CREATE TABLE cattoys (
 
 
 
-INSERT INTO cattoys (cat_id, toy_id)
-VALUES ();
-INSERT INTO cattoys (cat_id, toy_id)
-VALUES (15, 'red', 'yarn');
-INSERT INTO cattoys (cat_id, toy_id)
-VALUES (100, 'grey', 'cat_tower');
-INSERT INTO cattoys (cat_id, toy_id)
-VALUES (55, 'purple', 'grape_toy');
-INSERT INTO cattoys (cat_id, toy_id)
-VALUES (150, 'brick red', 'pawcuffs');
+
+
+EXPLAIN SELECT * FROM toys JOIN cattoys ON cattoys.toy_id = toys.id JOIN cats on cattoys.cat_id = cats.id WHERE cats.breed = 'ginger';
+
+EXPLAIN UPDATE cats SET color = 'moneygreen' WHERE color = 'black';
+
+EXPLAIN DELETE FROM toys WHERE id = 2;
+
+EXPLAIN ANALYZE SELECT * FROM toys JOIN cattoys ON cattoys.toy_id = toys.id JOIN cats on cattoys.cat_id = cats.id WHERE cats.name = 'Freyja';
+
+EXPLAIN ANALYZE SELECT * FROM toys JOIN cattoys ON cattoys.toy_id = toys.id JOIN cats on cattoys.cat_id = cats.id WHERE cats.color = 'Red' OR toys.color = 'Red';
+EXPLAIN ANALYZE SELECT toys.*, cats.breed FROM toys JOIN cattoys ON cattoys.toy_id = toys.id JOIN cats on cattoys.cat_id = cats.id WHERE cats.breed = 'British Shorthair';
+EXPLAIN ANALYZE SELECT * FROM toys WHERE price < 10;
