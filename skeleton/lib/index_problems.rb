@@ -57,7 +57,7 @@ def example_index_problem
       FROM
         cats
       WHERE
-        cats.name = 'Jet';
+        cats.name = 'Jet'
   SQL
 end
 
